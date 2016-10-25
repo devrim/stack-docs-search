@@ -1,0 +1,32 @@
+{
+  "name": "terraform-yml",
+  "version": "1.0.4",
+  "description": "search api for terraform documentation in yaml",
+  "main": "index.js",
+  "dependencies": {
+    "fuzzy": "^0.1.3",
+    "hcl-to-json": "^0.0.2",
+    "install": "^0.8.1",
+    "json2yaml": "^1.1.0",
+    "marked": "^0.3.6",
+    "npm": "^3.10.8",
+    "recursive-readdir": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devrim/stack-docs-search.git"
+  },
+  "keywords": [
+    "terraform"
+  ],
+  "author": "devrim yasar",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/devrim/stack-docs-search/issues"
+  },
+  "homepage": "https://github.com/devrim/stack-docs-search#readme"
+}

@@ -1,11 +1,14 @@
 express = require('express')
 app = express()
+search = require("./index").search
 
 app.use(express.static('./website'));
 
-# app.get '/', (req, res) ->
-#   res.send fs.readFileSync "./index.html"
-#   return
+app.get '/search/:query', (req, res) ->
+  console.log req.params
+  res.send search(req.params.query)
+  return
+
 server = app.listen(8081, ->
   host = server.address().address
   port = server.address().port
