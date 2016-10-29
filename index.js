@@ -97,7 +97,8 @@ search = function(query) {
   results = fuzzy.filter(query, docs, options);
   matches = results.map(function(el) {
     final = []
-    return({title:el.string,content_markdown:el.original.data})
+    description = getTokenFromMarkdown(el.original.data, ['heading', 'code'])
+    return({title: el.string, description: description})
   });
   return matches;
 };
