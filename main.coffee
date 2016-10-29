@@ -1,12 +1,19 @@
 express = require('express')
 app = express()
-search = require("./index").search
+{ search, getContent } = require './index'
 
 app.use(express.static('./website'));
 
 app.get '/search/:query', (req, res) ->
-  console.log req.params
-  res.send search(req.params.query)
+
+  { query } = req.params
+  res.send search(query)
+  return
+
+app.get '/getContent/:query', (req, res) ->
+
+  { query } = req.params
+  res.send getContent(query)
   return
 
 server = app.listen(8081, ->
