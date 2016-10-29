@@ -7,6 +7,7 @@ hcl2json = require("hcl-to-json");
 child_process = require('child_process');
 json2yml = require('json2yaml');
 fuzzy = require("fuzzy");
+path = require('path')
 getTokenFromMarkdown = require('./utils/getTokenFromMarkdown');
 
 replaceHclToYaml = function(title, str) {
@@ -55,7 +56,8 @@ recreateDocs = function(callback) {
   });
 };
 
-docs = JSON.parse(fs.readFileSync("./docs.json"));
+console.log('dirname', __dirname)
+docs = JSON.parse(fs.readFileSync(path.join(__dirname, "./docs.json")));
 
 searchDocs = function(query) {
   var results;
