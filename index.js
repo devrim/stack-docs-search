@@ -1,18 +1,13 @@
-var child_process, docs, fs, fuzzy, hcl2json, json2yml, marked, recreateDocs, recursive, replaceHclToYaml, search, searchDocs;
+var child_process, docs, fs, fuzzy, hcl2json, json2yml, marked, recreateDocs, recursive, replaceHclToYaml, search, getContent, searchDocs, getTokenFromMarkdown;
 
 recursive = require('recursive-readdir');
-
 fs = require('fs');
-
 marked = require('marked');
-
 hcl2json = require("hcl-to-json");
-
 child_process = require('child_process');
-
 json2yml = require('json2yaml');
-
 fuzzy = require("fuzzy");
+getTokenFromMarkdown = require('./utils/getTokenFromMarkdown');
 
 replaceHclToYaml = function(title, str) {
   var a;
@@ -62,8 +57,6 @@ recreateDocs = function(callback) {
 
 docs = JSON.parse(fs.readFileSync("./docs.json"));
 
-
-
 searchDocs = function(query) {
   var results;
   results = [];
@@ -76,13 +69,17 @@ searchDocs = function(query) {
 };
 
 getContent = function(title){
-  docs.forEach(function(v) {
-    if (content.title == title) {
-      return content.data
+  var content = null
+  length = docs.length
+  for (var i=0; i<length; i++){
+    var doc = docs[i]
+    if(docs[i].value == title){
+      content = docs[i].data
+      break
     }
-  });
-  return null
+  }
 
+  return content
 }
 
 search = function(query) {
@@ -106,5 +103,6 @@ search = function(query) {
 module.exports = {
   recreateDocs: recreateDocs,
   searchDocs: searchDocs,
-  search: search
+  search: search,
+  getContent: getContent
 };
