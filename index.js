@@ -56,7 +56,6 @@ recreateDocs = function(callback) {
   });
 };
 
-console.log('dirname', __dirname)
 docs = JSON.parse(fs.readFileSync(path.join(__dirname, "./docs.json")));
 
 searchDocs = function(query) {
